@@ -6,10 +6,17 @@ var eventSchema = new mongoose.Schema ({
   totalBill: String,
   payer: String,
   settled: Boolean,
-  // attendees: {
-  //   type: Schema.ObjectId,
-  //   ref: 'Attendees'
-  // }
+  attendees: {
+    eachAttendee: [
+    // type: mongoose.Schema.ObjectId,
+    // ref: 'Attendee'
+    {
+      attendeeName: String,
+      amountOwe: Number,
+      paid: Boolean
+    }
+    ]
+  }
 })
 
 

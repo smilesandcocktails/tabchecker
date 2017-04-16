@@ -24,13 +24,15 @@ var ejsLayouts = require('express-ejs-layouts')
 app.use(ejsLayouts)
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
+app.use(express.static(path.join(__dirname, 'public')))
 
 
 // START THE ROUTING
 var eventRouter = require('./routes/eventRouter')
 app.use('/', eventRouter)
-app.use(express.static(path.join(__dirname, 'public')))
 
+// var attendeeRouter = require('./routes/attendeeRouter')
+// app.use('/', attendeeRouter)
 
 // END THE ROUTING
 

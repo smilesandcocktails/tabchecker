@@ -17,3 +17,7 @@
 <form method="POST" action=<%= "/events/" + foundEvent._id + "?_method=DELETE" %>>
   <button type="submit">Delete</button>
 </form>
+
+<form action=<%= "/events/" + foundEvent._id + "/addattendees" %> method="GET">
+  <button type="submit">Add Attendees</button>
+</form>
