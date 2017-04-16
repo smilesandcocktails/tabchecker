@@ -1,0 +1,15 @@
+<h2>Welcome to your events</h2>
+
+
+<ul class="eventList">
+  <% events.forEach(function (each) { %>
+    <li>
+      <strong><%= each.eventName %> </strong>
+      <%= each.date %>
+      <%= each.totalBill %>
+      <%= each.payer %>
+      <%= each.settled %>
+      <a href=<%= "/events/" + each._id %>>View</a>
+    </li>
+  <% }) %>
+</ul>

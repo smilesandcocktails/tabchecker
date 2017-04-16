@@ -1,0 +1,12 @@
+<h1>Single Event</h1>
+
+<h3>EVENT: <%= foundEvent.eventName %></h3>
+<h4>DATE: <%= foundEvent.date %></h4>
+<h4>TOTAL BILL: <%= foundEvent.totalBill %></h4>
+<h4>PAID BY: <%= foundEvent.payer %></h4>
+<h4>SETTLED: <%= foundEvent.settled %></h4>
+
+<a href=<%= "/todo/" + foundEvent._id + "/edit" %>>Update</a>
+<form method="POST" action=<%= "/todo/" + foundEvent._id + "?_method=DELETE" %>>
+  <button type="submit">Delete</button>
+</form>

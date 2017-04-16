@@ -1,0 +1,41 @@
+<h2>Add New Event</h2>
+
+<form class="addEvent" action="/events/add" method="POST">
+  <table>
+    <tr>
+      <td>
+        <label for="eventName">Event Name:</label>
+      </td>
+      <td>
+        <input type="text" name="eventName" placeholder="Event Name">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="date">Event Date:</label>
+      </td>
+      <td>
+        <input type="date" name="date" placeholder="Event Date">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="totalBill">Total Bill:   $</label>
+      </td>
+      <td>
+      <input type="number" name="totalBill" placeholder="$100">
+    </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="payer">Payer:</label>
+      </td>
+      <td>
+        <input type="text" name="payer" placeholder="Cara">
+      </td>
+    </tr>
+    <tr>
+      <button type="submit">Add New Event</button>
+    </tr>
+  </table>
+</form>
