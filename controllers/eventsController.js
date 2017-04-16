@@ -35,7 +35,7 @@ function postEventToDatabase (req, res) {
 
 function listOneEvent (req, res) {
   Event.findById(req.params.id, function (err, foundEvent) {
-    console.log(req.params.id);
+    console.log("foundEvent = " + req.params.id);
 
     console.log(foundEvent);
     if (err) console.error('Cannot Find Event')
@@ -44,17 +44,41 @@ function listOneEvent (req, res) {
   })
 }
 
-function editEvent (req, res) {
-  Event.findById(req.params.id, function (err, singleEvent) {
+function editEventPage (req, res) {
+  Event.findById(req.params.id, function (err, foundEvent) {
     if (err) console.error('Cannot Update Event')
-    res.render('events/edit', singleEvent)
+    res.render('events/edit', {foundEvent})
   })
 }
+
+function editEvent (req, res) {
+  var reqBody = req.body
+  Event.findOneAndUpdate({_id: req.params.id}, {
+    eventName: reqBody.eventName,
+    date: reqBody.date,
+    totalBill: reqBody.totalBill,
+    payer: reqBody.payer,
+    settled: reqBody.settled
+  }, function (err, editedEvent) {
+    if (err) console.error('Cannot Update Event')
+    res.redirect('/events/'+ editedEvent.id)
+  })
+}
+
+function deleteEvent (req, res) {
+  Event.findByIdAndRemove(req.params.id, function (err, eventToDelete) {
+    if (err) console.error('Cannot Delete Event')
+    res.redirect('/events')
+  })
+}
+
 module.exports = {
   home,
   eventsHome,
   addEvent,
   postEventToDatabase,
   listOneEvent,
+  editEventPage,
   editEvent,
+  deleteEvent,
 }

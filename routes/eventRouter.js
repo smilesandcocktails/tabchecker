@@ -14,8 +14,11 @@ router.route('/events/add')
 
 router.route('/events/:id')
 .get(eventsController.listOneEvent)
+.put(eventsController.editEvent)
+.delete(eventsController.deleteEvent)
 
 router.route('/events/:id/edit')
-.get(eventsController.editEvent)
+.get(eventsController.editEventPage)
+
 
 module.exports = router

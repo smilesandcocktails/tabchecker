@@ -6,7 +6,7 @@
 <h4>PAID BY: <%= foundEvent.payer %></h4>
 <h4>SETTLED: <%= foundEvent.settled %></h4>
 
-<a href=<%= "/todo/" + foundEvent._id + "/edit" %>>Update</a>
-<form method="POST" action=<%= "/todo/" + foundEvent._id + "?_method=DELETE" %>>
+<a href=<%= "/events/" + foundEvent._id + "/edit" %>>Update</a>
+<form method="POST" action=<%= "/events/" + foundEvent._id + "?_method=DELETE" %>>
   <button type="submit">Delete</button>
 </form>

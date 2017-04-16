@@ -1,13 +1,13 @@
-<h2>Edit <%-singleEvent.eventName%></h2>
+<h2>Edit <%-foundEvent.eventName%></h2>
 
-<form action=<%= "/events/" + singleEvent._id + "?_method=PUT" %> method="POST">
+<form action=<%= "/events/" + foundEvent._id + "?_method=PUT" %> method="POST">
   <table>
     <tr>
       <td>
         <label for="eventName">Event Name:</label>
       </td>
       <td>
-        <input type="text" name="eventName" placeholder="Event Name">
+        <input type="text" name="eventName" value="<%=foundEvent.eventName%>">
       </td>
     </tr>
     <tr>
@@ -15,7 +15,7 @@
         <label for="date">Event Date:</label>
       </td>
       <td>
-        <input type="date" name="date" placeholder="Event Date">
+        <input type="date" name="date" value="<%=foundEvent.date%>">
       </td>
     </tr>
     <tr>
@@ -23,7 +23,7 @@
         <label for="totalBill">Total Bill:   $</label>
       </td>
       <td>
-      <input type="number" name="totalBill" placeholder="$100">
+      <input type="number" name="totalBill" value="<%=foundEvent.totalBill%>">
     </td>
     </tr>
     <tr>
@@ -31,11 +31,11 @@
         <label for="payer">Payer:</label>
       </td>
       <td>
-        <input type="text" name="payer" placeholder="Cara">
+        <input type="text" name="payer" value="<%=foundEvent.payer%>">
       </td>
     </tr>
     <tr>
-      <button type="submit">Add New Event</button>
+      <button type="submit">Edit This Event</button>
     </tr>
   </table>
 </form>
