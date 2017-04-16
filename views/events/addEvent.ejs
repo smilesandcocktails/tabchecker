@@ -1,6 +1,10 @@
 <h2>Add New Event</h2>
 
-<form class="addEvent" action="/events/add" method="POST">
+<form action="/events" method="GET">
+  <button type="submit">Back to All Events</button>
+</form>
+
+<form action="/events/add" method="POST">
   <table>
     <tr>
       <td>
@@ -35,7 +39,7 @@
       </td>
     </tr>
     <tr>
-      <button type="submit">Add New Event</button>
+        <button type="submit">Create New Event</button>
     </tr>
   </table>
 </form>

@@ -20,17 +20,19 @@ function addEvent (req, res) {
 
 function postEventToDatabase (req, res) {
   var reqBody = req.body
-  Event.create({
+  console.log("reqBody is : " + reqBody);
+  console.log("res is : " + res);
+  var newEvent = new Event({
     eventName: reqBody.eventName,
     date: reqBody.date,
     totalBill: reqBody.totalBill,
     payer: reqBody.payer,
-    settled: "false"
-  }), function (err, newEvent) {
-    if (err) console.error('Did not add new Event.')
+  })
 
-    res.redirect('/events/eventsHome')
-  }
+  newEvent.save(function(err, savedEvent) {
+    if (err) console.error(err)
+    res.redirect('/events')
+  })
 }
 
 function listOneEvent (req, res) {
@@ -71,6 +73,7 @@ function deleteEvent (req, res) {
     res.redirect('/events')
   })
 }
+
 
 module.exports = {
   home,

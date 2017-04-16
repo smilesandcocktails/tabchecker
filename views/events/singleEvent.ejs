@@ -1,12 +1,19 @@
 <h1>Single Event</h1>
 
+<form action="/events" method="GET">
+  <button type="submit">Back to All Events</button>
+</form>
+
 <h3>EVENT: <%= foundEvent.eventName %></h3>
 <h4>DATE: <%= foundEvent.date %></h4>
 <h4>TOTAL BILL: <%= foundEvent.totalBill %></h4>
 <h4>PAID BY: <%= foundEvent.payer %></h4>
 <h4>SETTLED: <%= foundEvent.settled %></h4>
 
-<a href=<%= "/events/" + foundEvent._id + "/edit" %>>Update</a>
+<form action=<%= "/events/" + foundEvent._id + "/edit" %> method="GET">
+  <button type="submit">Update</button>
+</form>
+
 <form method="POST" action=<%= "/events/" + foundEvent._id + "?_method=DELETE" %>>
   <button type="submit">Delete</button>
 </form>

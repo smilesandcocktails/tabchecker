@@ -1,5 +1,8 @@
 <h2>Welcome to your events</h2>
 
+<form action="/events/add" method="GET">
+  <button type="submit">Add New Event</button>
+</form>
 
 <ul class="eventList">
   <% events.forEach(function (each) { %>
@@ -9,7 +12,13 @@
       <%= each.totalBill %>
       <%= each.payer %>
       <%= each.settled %>
-      <a href=<%= "/events/" + each._id %>>View</a>
+      <form action=<%="/events/"+ each._id%> method="GET">
+        <button type="submit">View</button>
+      </form>
+
+      <form method="POST" action=<%= "/events/" + each._id + "?_method=DELETE" %>>
+        <button type="submit">Delete</button>
+      </form>
     </li>
   <% }) %>
 </ul>
