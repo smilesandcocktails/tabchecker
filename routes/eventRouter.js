@@ -19,6 +19,6 @@ router.route('/events/:id/edit')
 
 router.route('/events/:id/addattendees')
 .get(eventsController.addAttendeesPage)
-.post(eventsController.addAttendees)
+// .post(eventsController.addAttendees)
 
 module.exports = router

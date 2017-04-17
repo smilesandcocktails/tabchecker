@@ -43,14 +43,14 @@ function listOneEvent (req, res) {
     res.render('events/singleEvent', {foundEvent})
   })
 
-  Event.findById(req.params.id).populate('attendees').exec(function (err, output) {
-    if (err) console.error('Cannot populate attendees for this event')
+  // Event.findById(req.params.id).populate('attendees').exec(function (err, output) {
+  //   if (err) console.error('Cannot populate attendees for this event')
 
-    console.log("OUTPUT IS " + output)
-    console.log("OUTPUT.ATTENDEES IS " + output.attendees);
+    // console.log("OUTPUT IS " + output)
+    // console.log("OUTPUT.ATTENDEES IS " + output.attendees);
 
     // res.render('events/singleEvent', {allAttendees: output.attendees})
-  })
+  // })
 }
 
 function editEventDetails (req, res) {
@@ -93,19 +93,19 @@ console.log('<<<<<---addAttendeesPage function has started--->>>>>')
   })
 }
 
-function addAttendees (req, res) {
-  console.log('<<<<<---addAttendees function has started--->>>>>')
-  var reqBody = req.body
-
-
-
-  Event.findOneAndUpdate({_id: req.params.id}, {
-    // attendees:
-  }, function (err, eventWithAddedAttendees) {
-    if (err) console.error('Cannot Add Attendees to Event')
-    res.redirect('/events/'+ eventWithAddedAttendees.id)
-  })
-}
+// function addAttendees (req, res) {
+//   console.log('<<<<<---addAttendees function has started--->>>>>')
+//   var reqBody = req.body
+//
+//
+//
+//   Event.findOneAndUpdate({_id: req.params.id}, {
+//     // attendees:
+//   }, function (err, eventWithAddedAttendees) {
+//     if (err) console.error('Cannot Add Attendees to Event')
+//     res.redirect('/events/'+ eventWithAddedAttendees.id)
+//   })
+// }
 
 module.exports = {
   eventsHome,
@@ -116,5 +116,5 @@ module.exports = {
   editEvent,
   deleteEvent,
   addAttendeesPage,
-  addAttendees,
+  // addAttendees,
 }
