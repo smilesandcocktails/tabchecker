@@ -5,7 +5,9 @@ var passport = require('../config/ppConfig')
 
 function homepage (req, res) {
   console.log('<<<<<---homepage(usersCont) function has started--->>>>>')
-  res.render('homepage')
+  res.render('homepage', {
+    session: req.session
+  });
 }
 
 function signupPage (req, res) {
