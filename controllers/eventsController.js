@@ -6,7 +6,7 @@ var Event = require('../models/event')
 
 
 function eventsHome (req, res) {
-  console.log('<<<<<---eventsHome function has started--->>>>>')
+  console.log('<<<<<---eventsHome(eventsCont) function has started--->>>>>')
   Event.find({}, function (err, events) {
     if (err) console.error('Cannot find events to list')
     res.render('events/eventsHome', {events})
@@ -14,12 +14,12 @@ function eventsHome (req, res) {
 }
 
 function addEvent (req, res) {
-  console.log('<<<<<---addEvent function has started--->>>>>')
+  console.log('<<<<<---addEvent(eventsCont) function has started--->>>>>')
   res.render('events/addEvent')
 }
 
 function postEventToDatabase (req, res) {
-  console.log('<<<<<---postEventToDatabase function has started--->>>>>')
+  console.log('<<<<<---postEventToDatabase(eventsCont) function has started--->>>>>')
   var reqBody = req.body
   console.log("reqBody is : " + reqBody);
   console.log("res is : " + res);
@@ -37,7 +37,7 @@ function postEventToDatabase (req, res) {
 }
 
 function listOneEvent (req, res) {
-  console.log('<<<<<---listOneEvent function has started--->>>>>')
+  console.log('<<<<<---listOneEvent(eventsCont) function has started--->>>>>')
   Event.findById(req.params.id, function (err, foundEvent) {
     if (err) console.error('Cannot Find Event')
     res.render('events/singleEvent', {foundEvent})
@@ -54,7 +54,7 @@ function listOneEvent (req, res) {
 }
 
 function editEventDetails (req, res) {
-console.log('<<<<<---editEventDetails function has started--->>>>>')
+console.log('<<<<<---editEventDetails(eventsCont) function has started--->>>>>')
   Event.findById(req.params.id, function (err, foundEvent) {
     if (err) console.error('Cannot Update Event')
     res.render('events/edit', {foundEvent})
@@ -62,7 +62,7 @@ console.log('<<<<<---editEventDetails function has started--->>>>>')
 }
 
 function editEvent (req, res) {
-  console.log('<<<<<---editEvent function has started--->>>>>')
+  console.log('<<<<<---editEvent(eventsCont) function has started--->>>>>')
   var reqBody = req.body
   Event.findOneAndUpdate({_id: req.params.id}, {
     eventName: reqBody.eventName,
@@ -77,7 +77,7 @@ function editEvent (req, res) {
 }
 
 function deleteEvent (req, res) {
-  console.log('<<<<<---deleteEvent function has started--->>>>>')
+  console.log('<<<<<---deleteEvent(eventsCont) function has started--->>>>>')
   Event.findByIdAndRemove(req.params.id, function (err, eventToDelete) {
     if (err) console.error('Cannot Delete Event')
     res.redirect('/events')
@@ -85,7 +85,7 @@ function deleteEvent (req, res) {
 }
 
 function addAttendeesPage (req, res) {
-console.log('<<<<<---addAttendeesPage function has started--->>>>>')
+console.log('<<<<<---addAttendeesPage(eventsCont) function has started--->>>>>')
   Event.findById(req.params.id, function (err, foundEvent) {
     if (err) console.error('Cannot Add Attendees')
     console.log(foundEvent);
