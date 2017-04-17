@@ -1,4 +1,7 @@
-<h2>Add New Event</h2>
+<div class="col-md-12">
+  <h2>Add New Event</h2>
+  <p>Happened on <%-foundEvent.date%></p>
+</div>
 
 <form action="/events" method="GET">
   <button type="submit">Back to All Events</button>
@@ -39,7 +42,7 @@
       </td>
     </tr>
     <tr>
-        <button type="submit">Create New Event</button>
+        <button type="submit" class="btn btn-primary">Create New Event</button>
     </tr>
   </table>
 </form>
