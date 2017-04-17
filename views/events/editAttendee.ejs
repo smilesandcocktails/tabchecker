@@ -1,0 +1,10 @@
+<h1><%=editedAttendees%></h1>
+
+<form action=<%= "/events/" + foundEvent._id%> method="POST">
+        <label for="name">Attendee Name:</label>
+        <input type="text" name="name" placeholder="Attendee Name">
+        <label for="amountOwe">Amount Owe:</label>
+        <input type="amountOwe" name="amountOwe" placeholder="$">
+
+        <button type="submit">Create New Attendee</button>
+</form>

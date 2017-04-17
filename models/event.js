@@ -6,11 +6,9 @@ var eventSchema = new mongoose.Schema ({
   date: Date,
   totalBill: String,
   payer: String,
-  settled: Boolean,
   attendees: [{
     name: String,
     amountOwe: Number,
-    paid: Boolean
   }]
 })
 

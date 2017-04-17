@@ -18,6 +18,9 @@ router.route('/events/:id')
 router.route('/events/:id/edit')
 .get(eventsController.editEventDetails)
 
-
+router.route('/events/:id/editattendee')
+.get(eventsController.attendeePage)
+.put(eventsController.editAttendee)
+.delete(eventsController.deleteAttendee)
 
 module.exports = router

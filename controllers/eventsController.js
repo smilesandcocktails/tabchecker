@@ -7,6 +7,9 @@ var User = require('../models/user')
 
 function eventsHome (req, res) {
   console.log('<<<<<---eventsHome(eventsCont) function has started--->>>>>')
+
+
+
   Event.find({}, function (err, events) {
     if (err) console.error('Cannot find events to list')
     res.render('events/eventsHome', {events})
@@ -88,12 +91,51 @@ function addAttendees (req, res) {
     amountOwe: reqBody.amountOwe
   }
   console.log('req.params.id'+req.params.id)
+  Event.findByIdAndUpdate({_id: req.params.id}, { $push: {attendees: attendeeObj}}, function (err, editedAttendees) {
+    console.log('editedAttendees'+editedAttendees);
+    if (err) console.error('Cannot Add Attendees to Event')
+    res.render('/events/'+ req.params.id + '/editattendee', {editedAttendees})
+    // ('/events/'+ addedAttendees.id)
+  })
+}
+
+function attendeePage (req, res) {
+  console.log('<<<<<---attendeePage(eventsCont) function has started--->>>>>')
+    var specificAttendee = Event.attendees
+    specificAttendee.findById(req.params.id, function (err, foundAttendee) {
+      if (err) console.error('Cannot Update Attendee')
+      res.render('events/editAttendee', {foundAttendee})
+    })
+}
+
+function editAttendee (req, res) {
+  console.log('<<<<<---editAttendee function has started--->>>>>')
+
+  var reqBody = req.body
+  var attendeeObj = {
+    name: reqBody.name,
+    amountOwe: reqBody.amountOwe
+  }
+
   Event.findByIdAndUpdate({_id: req.params.id}, { $push: {attendees: attendeeObj}}, function (err, addedAttendees) {
-    console.log('AddedAttendees'+addedAttendees);
+    console.log('editedAttendees'+addedAttendees);
     if (err) console.error('Cannot Add Attendees to Event')
     res.redirect('/events/'+ req.params.id)
     // ('/events/'+ addedAttendees.id)
   })
+
+
+}
+
+function deleteAttendee (req, res) {
+console.log('<<<<<---deleteAttendee function has started--->>>>>')
+console.log('req = ' + req)
+console.log('req.params.id = ' + req.params.id)
+console.log('Event.attendees = ' + Event.attendees )
+  // Event.attendees.findByIdAndRemove(req.params.id, function (err, found) {
+  //   if (err) console.error('Cannot Delete Attendee')
+  //   res.redirect('/events')
+  // })
 }
 
 module.exports = {
@@ -105,4 +147,7 @@ module.exports = {
   editEvent,
   deleteEvent,
   addAttendees,
+  attendeePage,
+  editAttendee,
+  deleteAttendee,
 }
