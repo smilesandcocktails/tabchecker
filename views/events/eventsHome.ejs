@@ -1,28 +1,43 @@
-<h2>Welcome to your events</h2>
-
-<form action="/events/add" method="GET">
-  <button type="submit">Add New Event</button>
-</form>
-
-<form action="/logout" method="GET">
-  <button type="submit">Log Out</button>
-</form>
-
-<ul class="eventList">
-  <% events.forEach(function (each) { %>
-    <li>
-      <strong><%= each.eventName %> </strong>
-      <%= each.date %>
-      <%= each.totalBill %>
-      <%= each.payer %>
-      <%= each.settled %>
-      <form action=<%="/events/"+ each._id%> method="GET">
-        <button type="submit">View</button>
-      </form>
-
-      <form method="POST" action=<%= "/events/" + each._id + "?_method=DELETE" %>>
-        <button type="submit">Delete</button>
-      </form>
-    </li>
-  <% }) %>
-</ul>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-md-12">
+      <h2>Welcome to your events</h2>
+    </div>
+    <div class="col-md-12">
+      <a href="/events/add" class="btn btn-warning">Create New Event</a>
+      <a href="/logout" class="btn btn-warning">Logout</a>
+    </div>
+    <div class="col-md-12">
+      <table class="table"> 
+        caption>Optional table caption.</caption>
+        <thead> 
+          <tr> 
+            <th>Event name</th> 
+            <th>Event date</th> 
+            <th>Total Bill</th> 
+            <th>Payer</th> 
+            <th>Total Bill</th> 
+            <th>Options</th> 
+          </tr> 
+        </thead> 
+        <tbody> 
+          <% events.forEach(function (each) { %>
+          <tr> 
+            <td><%= each.eventName %></td> 
+            <td><%= each.date %></td> 
+            <td><%= each.totalBill %></td>
+            <td><%= each.payer %></td>
+            <td><%= each.settled %></td>
+            <td>
+              <a href="<%="/events/"+ each._id%>" class="btn btn-warning">Edit</a>
+              <form method="POST" action=<%= "/events/" + each._id + "?_method=DELETE" %>>
+                <button type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody> 
+      </table>
+    </div>
+  </div>
+</div>
