@@ -1,17 +1,17 @@
 var mongoose = require('mongoose')
 
+
 var eventSchema = new mongoose.Schema ({
   eventName: String,
   date: Date,
   totalBill: String,
   payer: String,
   settled: Boolean,
-  // attendees: {
-    // attended: [{
-      // userId: mongoose.Schema.ObjectId,
-      // ref: 'User'
-    // }]
-  // }
+  attendees: [{
+    name: String,
+    amountOwe: Number,
+    paid: Boolean
+  }]
 })
 
 

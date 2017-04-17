@@ -6,8 +6,10 @@
         <input type="text" name="attendeeName" placeholder="Attendee Name">
         <label for="amountOwe">Amount Owe:</label>
         <input type="amountOwe" name="amountOwe" placeholder="$">
-        <label for="paid">Paid</label>
-      <input type="radio" name="paid">
-      <input type="radio" name="paid">
+
         <button type="submit">Create New Attendee</button>
+</form>
+
+<form action=<%= "/events/" + foundEvent._id + "/addattendees" %> method="GET">
+  <button type="submit">Add Attendees</button>
 </form>

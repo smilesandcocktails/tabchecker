@@ -9,6 +9,7 @@
 <h4>TOTAL BILL: <%= foundEvent.totalBill %></h4>
 <h4>PAID BY: <%= foundEvent.payer %></h4>
 <h4>SETTLED: <%= foundEvent.settled %></h4>
+<h4><%=foundEvent.attendees%></h4>
 
 <form action=<%= "/events/" + foundEvent._id + "/edit" %> method="GET">
   <button type="submit">Update</button>
@@ -18,6 +19,13 @@
   <button type="submit">Delete</button>
 </form>
 
-<form action=<%= "/events/" + foundEvent._id + "/addattendees" %> method="GET">
-  <button type="submit">Add Attendees</button>
+<h2>Add Attendees</h2>
+
+<form action=<%= "/events/" + foundEvent._id%> method="POST">
+        <label for="name">Attendee Name:</label>
+        <input type="text" name="name" placeholder="Attendee Name">
+        <label for="amountOwe">Amount Owe:</label>
+        <input type="amountOwe" name="amountOwe" placeholder="$">
+
+        <button type="submit">Create New Attendee</button>
 </form>

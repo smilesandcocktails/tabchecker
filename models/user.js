@@ -1,11 +1,12 @@
 var mongoose = require('mongoose')
 var bcrypt = require('bcrypt')
 var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
-
+var Event = require('./event')
 
 var UserSchema = new mongoose.Schema ({
   name: {
     type: String,
+    required: true,
     minlength: [3, 'Name must be between 3 and 99 characters'],
     maxlength: [99, 'Name must be between 3 and 99 characters']
   },
@@ -21,7 +22,11 @@ var UserSchema = new mongoose.Schema ({
     required: true,
     minlength: [8, 'Password must be between 8 and 99 characters'],
     maxlength: [99, 'Password must be between 8 and 99 characters']
-  }
+  },
+  events: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'Event'
+  }]
 })
 
 UserSchema.pre('save', function(next) {

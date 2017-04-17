@@ -2,7 +2,7 @@ var express = require('express')
 var app = express()
 var router = express.Router()
 var Event = require('../models/event')
-// var Attendee = require('../models/attendee')
+var User = require('../models/user')
 
 
 function eventsHome (req, res) {
@@ -42,19 +42,11 @@ function listOneEvent (req, res) {
     if (err) console.error('Cannot Find Event')
     res.render('events/singleEvent', {foundEvent})
   })
-
-  // Event.findById(req.params.id).populate('attendees').exec(function (err, output) {
-  //   if (err) console.error('Cannot populate attendees for this event')
-
-    // console.log("OUTPUT IS " + output)
-    // console.log("OUTPUT.ATTENDEES IS " + output.attendees);
-
-    // res.render('events/singleEvent', {allAttendees: output.attendees})
-  // })
 }
 
 function editEventDetails (req, res) {
 console.log('<<<<<---editEventDetails(eventsCont) function has started--->>>>>')
+
   Event.findById(req.params.id, function (err, foundEvent) {
     if (err) console.error('Cannot Update Event')
     res.render('events/edit', {foundEvent})
@@ -84,28 +76,25 @@ function deleteEvent (req, res) {
   })
 }
 
-function addAttendeesPage (req, res) {
-console.log('<<<<<---addAttendeesPage(eventsCont) function has started--->>>>>')
-  Event.findById(req.params.id, function (err, foundEvent) {
-    if (err) console.error('Cannot Add Attendees')
-    console.log(foundEvent);
-    res.render('events/addAttendees', {foundEvent})
+function addAttendees (req, res) {
+  console.log('<<<<<---addAttendees function has started--->>>>>')
+
+  var reqBody = req.body
+  console.log('reqBody =' + reqBody)
+  console.log('reqBody.name =' + reqBody.name)
+  console.log('reqBody.amountOwe =' + reqBody.amountOwe)
+  var attendeeObj = {
+    name: reqBody.name,
+    amountOwe: reqBody.amountOwe
+  }
+  console.log('req.params.id'+req.params.id)
+  Event.findByIdAndUpdate({_id: req.params.id}, { $push: {attendees: attendeeObj}}, function (err, addedAttendees) {
+    console.log('AddedAttendees'+addedAttendees);
+    if (err) console.error('Cannot Add Attendees to Event')
+    res.redirect('/events/'+ req.params.id)
+    // ('/events/'+ addedAttendees.id)
   })
 }
-
-// function addAttendees (req, res) {
-//   console.log('<<<<<---addAttendees function has started--->>>>>')
-//   var reqBody = req.body
-//
-//
-//
-//   Event.findOneAndUpdate({_id: req.params.id}, {
-//     // attendees:
-//   }, function (err, eventWithAddedAttendees) {
-//     if (err) console.error('Cannot Add Attendees to Event')
-//     res.redirect('/events/'+ eventWithAddedAttendees.id)
-//   })
-// }
 
 module.exports = {
   eventsHome,
@@ -115,6 +104,5 @@ module.exports = {
   editEventDetails,
   editEvent,
   deleteEvent,
-  addAttendeesPage,
-  // addAttendees,
+  addAttendees,
 }
