@@ -1,41 +1,31 @@
-<h2>Edit <%-foundEvent.eventName%></h2>
-
-<form action=<%= "/events/" + foundEvent._id + "?_method=PUT" %> method="POST">
-  <table>
-    <tr>
-      <td>
-        <label for="eventName">Event Name:</label>
-      </td>
-      <td>
-        <input type="text" name="eventName" value="<%=foundEvent.eventName%>">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="date">Event Date:</label>
-      </td>
-      <td>
-        <input type="date" name="date" value="<%=foundEvent.date%>">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="totalBill">Total Bill:   $</label>
-      </td>
-      <td>
-      <input type="number" name="totalBill" value="<%=foundEvent.totalBill%>">
-    </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="payer">Payer:</label>
-      </td>
-      <td>
-        <input type="text" name="payer" value="<%=foundEvent.payer%>">
-      </td>
-    </tr>
-    <tr>
-      <button type="submit">Update</button>
-    </tr>
-  </table>
-</form>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-md-12">
+    <h2>Edit <%-foundEvent.eventName%></h2>
+  </div>
+  <div class="col-md-12">
+    <a href="/events" class="btn btn-warning">Back to All Events</a>
+    <form action="/events/add" method="POST">
+      <div class="form-group">
+          <label for="eventName">Event Name:</label>
+          <input type="text" name="eventName" value="<%=foundEvent.eventName%>" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="amountOwe">Event Date:</label>
+          <input type="date" name="date" value="<%=foundEvent.date%>" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="amountOwe">Total Bill:</label>
+          <input type="number" name="totalBill" value="<%=foundEvent.totalBill%>" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="amountOwe">Payer:</label>
+          <input type="text" name="payer" value="<%=foundEvent.payer%>" class="form-control">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+  </div>
+  </div>
+</div>

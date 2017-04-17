@@ -1,48 +1,32 @@
-<div class="col-md-12">
-  <h2>Add New Event</h2>
-  <p>Happened on <%-foundEvent.date%></p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-md-12">
+    <h2>Create New Event</h2>
+    <p>Happened on <%-foundEvent.date%></p>
+  </div>
+  <div class="col-md-12">
+    <a href="/events" class="btn btn-warning">Back to All Events</a>
+    <form action="/events/add" method="POST">
+      <div class="form-group">
+          <label for="eventName">Event Name:</label>
+          <input type="text" name="eventName" placeholder="Event Name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="amountOwe">Event Date:</label>
+          <input type="date" name="date" placeholder="Event Date" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="amountOwe">Total Bill:</label>
+          <input type="number" name="totalBill" placeholder="$100" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="amountOwe">Payer:</label>
+          <input type="text" name="payer" placeholder="Ex: Cara" class="form-control">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Create New Event</button>
+        </div>
+    </form>
+  </div>
+  </div>
 </div>
-
-<form action="/events" method="GET">
-  <button type="submit">Back to All Events</button>
-</form>
-
-<form action="/events/add" method="POST">
-  <table>
-    <tr>
-      <td>
-        <label for="eventName">Event Name:</label>
-      </td>
-      <td>
-        <input type="text" name="eventName" placeholder="Event Name">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="date">Event Date:</label>
-      </td>
-      <td>
-        <input type="date" name="date" placeholder="Event Date">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="totalBill">Total Bill:   $</label>
-      </td>
-      <td>
-      <input type="number" name="totalBill" placeholder="$100">
-    </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="payer">Payer:</label>
-      </td>
-      <td>
-        <input type="text" name="payer" placeholder="Cara">
-      </td>
-    </tr>
-    <tr>
-        <button type="submit" class="btn btn-primary">Create New Event</button>
-    </tr>
-  </table>
-</form>
