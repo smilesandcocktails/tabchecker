@@ -4,13 +4,21 @@
 </div>
 <div class="col-md-12">
 	<form action="" method="POST">
-    	<label for="attendeeName">Attendee Name:</label>
-    	<input type="text" name="attendeeName" placeholder="Attendee Name">
-    	<label for="amountOwe">Amount Owe:</label>
-    	<input type="amountOwe" name="amountOwe" placeholder="$">
-    	<label for="paid">Paid</label>
-  		<input type="radio" name="paid">
-  		<input type="radio" name="paid">
-    	<button type="submit" class="btn btn-primary">Create New Attendee</button>
+		<div class="form-group">
+    		<label for="attendeeName">Attendee Name:</label>
+    		<input type="text" name="attendeeName" placeholder="Attendee Name" class="form-control">
+    	</div>
+    	<div class="form-group">
+	    	<label for="amountOwe">Amount Owe:</label>
+	    	<input type="amountOwe" name="amountOwe" placeholder="$" class="form-control">
+    	</div>
+    	<div class="form-group">
+	    	<label for="paid">Paid</label>
+	  		<input type="radio" name="paid" class="form-control">
+	  		<input type="radio" name="paid" class="form-control">
+  		</div>
+  		<div class="form-group">
+    		<button type="submit" class="btn btn-primary">Create New Attendee</button>
+    	</div>
 	</form>
 </div
