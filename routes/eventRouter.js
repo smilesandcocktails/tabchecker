@@ -13,14 +13,11 @@ router.route('/events/:id')
 .get(eventsController.listOneEvent)
 .post(eventsController.addAttendees)
 .put(eventsController.editEvent)
+.delete(eventsController.deleteAttendee)
 .delete(eventsController.deleteEvent)
 
 router.route('/events/:id/edit')
 .get(eventsController.editEventDetails)
 
-router.route('/events/:id/editattendee')
-.get(eventsController.attendeePage)
-.put(eventsController.editAttendee)
-.delete(eventsController.deleteAttendee)
 
 module.exports = router
