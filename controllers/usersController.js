@@ -20,24 +20,27 @@ function createSignup (req, res) {
 
   var reqBody = req.body
   console.log('req.body', reqBody)
-  var newUser = new User()
+  
+  res.json(reqBody);
 
-  newUser.name = reqBody.name
-  newUser.email = reqBody.email
-  newUser.password = reqBody.password
-  newUser.save(function (err, createdUser) {
-    console.log('Created User',createdUser)
-    if (err) {
-      console.log('err', err)
-      req.flash('error', 'Could not create user account')
-      res.redirect('/signup')
-    } else {
-      passport.authenticate('local', {
-        successRedirect: '/events',
-        successFlash: 'Account created and logged in'
-      })(req, res)
-    }
-  })
+  // var newUser = new User()
+
+  // newUser.name = reqBody.name
+  // newUser.email = reqBody.email
+  // newUser.password = reqBody.password
+  // newUser.save(function (err, createdUser) {
+  //   console.log('Created User',createdUser)
+  //   if (err) {
+  //     console.log('err', err)
+  //     req.flash('error', 'Could not create user account')
+  //     res.redirect('/signup')
+  //   } else {
+  //     passport.authenticate('local', {
+  //       successRedirect: '/events',
+  //       successFlash: 'Account created and logged in'
+  //     })(req, res)
+  //   }
+  // })
 }
 
 function showLogin (req, res) {
