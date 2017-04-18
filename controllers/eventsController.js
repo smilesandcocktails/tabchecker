@@ -51,6 +51,7 @@ function postEventToDatabase (req, res) {
 function listOneEvent (req, res) {
   console.log('<<<<<---listOneEvent(eventsCont) function has started--->>>>>')
   Event.findById(req.params.id, function (err, foundEvent) {
+    console.log('EVENT AFTER DELETE' + foundEvent);
     if (err) console.error('Cannot Find Event')
     res.render('events/singleEvent', {foundEvent})
   })
@@ -120,12 +121,12 @@ function deleteAttendee (req, res) {
       if (each.id === req.body.id)
       foundEvent.attendees.splice(index, 1)
     })
-      console.log('foundEvent after POP is ' + foundEvent);
+      foundEvent.save()
+      console.log('foundEvent after REMOVE is ' + foundEvent);
       res.redirect('/events/' + req.params.id)
   })
 
 }
-
 
 
 module.exports = {

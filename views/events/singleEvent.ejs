@@ -38,6 +38,7 @@
       <td><%=i+1%></td>
       <td><%=foundEvent.attendees[i].name%></td>
       <td>$<%=foundEvent.attendees[i].amountOwe%></td>
+    </form>
 
     <td><form method="POST" action="/events/<%-foundEvent._id%>?_method=DELETE">
 
