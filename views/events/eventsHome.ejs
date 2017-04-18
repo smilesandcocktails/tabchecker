@@ -19,11 +19,9 @@
       <form action=<%="/events/"+ each._id%> method="GET">
         <button type="submit">View</button>
       </form>
-
       <td><form method="POST" action="/events?_method=DELETE">
         <button value= <%=each._id%> name = "id" type = "submit">Delete</button></td>
       </form></td>
-
     </li>
   <% }) %>
 </ul>

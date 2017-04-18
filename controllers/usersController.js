@@ -8,6 +8,13 @@ function homepage (req, res) {
   res.render('homepage')
 }
 
+function logout (req, res) {
+  console.log('<<<<<---logout(usersCont) function has started--->>>>>')
+  req.logout()
+  req.flash('success', 'You have logged out')
+  res.redirect('/')
+}
+
 function signupPage (req, res) {
   console.log('<<<<<---signupPage(usersCont) function has started--->>>>>')
   res.render('user/signup')
@@ -51,18 +58,11 @@ function authenticateLogin (req, res) {
   })(req, res)
 }
 
-function logout (req, res) {
-  console.log('<<<<<---logout(usersCont) function has started--->>>>>')
-  req.logout()
-  req.flash('success', 'You have logged out')
-  res.redirect('/')
-}
-
 module.exports = {
   homepage,
+  logout,
   signupPage,
   createSignup,
   showLogin,
   authenticateLogin,
-  logout
 }

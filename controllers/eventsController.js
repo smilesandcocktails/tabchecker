@@ -39,10 +39,9 @@ function postEventToDatabase (req, res) {
     console.log(foundEvent)
     if (err) console.error(err)
     // foundEvent.events.push(newEvent.id)
-    User.findById(req.user.id, function (err, foundUser) {
+    User.findByIdAndUpdate(req.user.id, {$push: {events: foundEvent._id}},function (err, foundUser) {
       if (err) console.log(err)
-      foundUser.events.push(foundEvent)
-      foundUser.save()
+      console.log('push event', foundUser.events)
       res.redirect('/events')
     })
   })

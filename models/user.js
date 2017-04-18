@@ -7,8 +7,8 @@ var UserSchema = new mongoose.Schema ({
   name: {
     type: String,
     required: true,
-    minlength: [3, 'Name must be between 3 and 99 characters'],
-    maxlength: [99, 'Name must be between 3 and 99 characters']
+    minlength: [3, 'Name must be between 3 and 20 characters'],
+    maxlength: [20, 'Name must be between 3 and 20 characters']
   },
   email: {
     type: String,
@@ -20,8 +20,8 @@ var UserSchema = new mongoose.Schema ({
   password: {
     type: String,
     required: true,
-    minlength: [8, 'Password must be between 8 and 99 characters'],
-    maxlength: [99, 'Password must be between 8 and 99 characters']
+    minlength: [6, 'Password must be between 6 and 20 characters'],
+    maxlength: [20, 'Password must be between 6 and 20 characters']
   },
   events: [{
     type: mongoose.Schema.ObjectId,

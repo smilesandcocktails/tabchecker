@@ -9,8 +9,7 @@ var eventSchema = new mongoose.Schema ({
   attendees: [{
     name: String,
     amountOwe: Number,
-  }],
-  creator: String,
+  }]
 })
 
 

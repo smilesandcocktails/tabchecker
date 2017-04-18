@@ -4,6 +4,10 @@
   <button type="submit">Back to All Events</button>
 </form>
 
+<form action="/logout" method="GET">
+  <button type="submit">Log Out</button>
+</form>
+
 <p>EVENT: <%= foundEvent.eventName %></p>
 <p>DATE: <%= foundEvent.date %></p>
 <p>TOTAL BILL: $<%= foundEvent.totalBill %></p>
