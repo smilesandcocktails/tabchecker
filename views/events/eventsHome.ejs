@@ -20,9 +20,10 @@
         <button type="submit">View</button>
       </form>
 
-      <form method="POST" action=<%= "/events/" + each._id + "?_method=DELETE" %>>
-        <button type="submit">Delete</button>
-      </form>
+      <td><form method="POST" action="/events?_method=DELETE">
+        <button value= <%-each.id%> name = "id" type = "submit">Delete</button></td>
+      </form></td>
+
     </li>
   <% }) %>
 </ul>

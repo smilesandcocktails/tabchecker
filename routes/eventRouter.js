@@ -4,6 +4,7 @@ var eventsController = require('../controllers/eventsController')
 
 router.route('/events')
 .get(eventsController.eventsHome)
+.delete(eventsController.deleteEvent)
 
 router.route('/events/add')
 .get(eventsController.addEvent)
@@ -14,7 +15,6 @@ router.route('/events/:id')
 .post(eventsController.addAttendees)
 .put(eventsController.editEvent)
 .delete(eventsController.deleteAttendee)
-.delete(eventsController.deleteEvent)
 
 router.route('/events/:id/edit')
 .get(eventsController.editEventDetails)

@@ -97,6 +97,14 @@ function editEvent (req, res) {
   })
 }
 
+function deleteEvent (req, res) {
+  console.log('<<<<<---deleteEvent(eventsCont) function has started--->>>>>')
+  Event.findByIdAndRemove(req.params.id, function (err, eventToDelete) {
+    if (err) console.error('Cannot Delete Event')
+    res.redirect('/events')
+  })
+}
+
 function deleteAttendee (req, res) {
   console.log('<<<<<---deleteAttendee function has started--->>>>>')
 
@@ -113,13 +121,7 @@ function deleteAttendee (req, res) {
 
 }
 
-function deleteEvent (req, res) {
-  console.log('<<<<<---deleteEvent(eventsCont) function has started--->>>>>')
-  Event.findByIdAndRemove(req.params.id, function (err, eventToDelete) {
-    if (err) console.error('Cannot Delete Event')
-    res.redirect('/events')
-  })
-}
+
 
 module.exports = {
   eventsHome,
