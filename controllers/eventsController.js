@@ -10,9 +10,11 @@ function eventsHome (req, res) {
   console.log('REQ (eventsHome)' + req)
   console.log('REQ.USER (eventsHome)' + req.user);
 
-  Event.find({}, function (err, events) {
-    if (err) console.error('Cannot find events to list')
-    res.render('events/eventsHome', {events})
+  User.findById(req.user.id).populate('events').exec( function (err, events) {
+    console.log('POPULATE FUNCTION STARTS');
+    console.log(events);
+    if (err) console.log(err)
+    res.render('events/eventsHome', {events: events.events})
   })
 }
 
@@ -33,13 +35,16 @@ function postEventToDatabase (req, res) {
     payer: reqBody.payer,
   })
 
-  newEvent.save(function(err, savedEvent) {
-
-    savedEvent.attendees.push(newEvent.id)
-
+  newEvent.save(function(err, foundEvent) {
+    console.log(foundEvent)
     if (err) console.error(err)
-    res.send(savedEvent.attendees)
-    // res.redirect('/events')
+    // foundEvent.events.push(newEvent.id)
+    User.findById(req.user.id, function (err, foundUser) {
+      if (err) console.log(err)
+      foundUser.events.push(foundEvent)
+      foundUser.save()
+      res.redirect('/events')
+    })
   })
 }
 
@@ -94,13 +99,18 @@ function editEvent (req, res) {
 
 function deleteAttendee (req, res) {
   console.log('<<<<<---deleteAttendee function has started--->>>>>')
-  console.log('req = ' + req)
-  console.log('req.params.id = ' + req.params.id)
-  console.log('Event.attendees = ' + Event.attendees )
-  Event.attendees.findByIdAndRemove(req.params.id, function (err, found) {
-    if (err) console.error('Cannot Delete Attendee')
-    res.redirect('/events')
+
+  Event.findById(req.params.id, function (err, foundEvent) {
+    console.log('foundEvent' + foundEvent);
+
+    foundEvent.attendees.forEach(function (each, index) {
+      if (each.id === req.body.id)
+      foundEvent.attendees.splice(index, 1)
+    })
+      console.log('foundEvent after POP is ' + foundEvent);
+      res.redirect('/events/' + req.params.id)
   })
+
 }
 
 function deleteEvent (req, res) {

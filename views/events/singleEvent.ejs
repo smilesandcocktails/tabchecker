@@ -33,7 +33,6 @@
     <th>#</th>
     <th>Name</th>
     <th>Amount Owe</th>
-    <th>Update</th>
     <th>Already Paid</th>
   </tr>
 
@@ -43,11 +42,9 @@
       <td><%=i+1%></td>
       <td><%=foundEvent.attendees[i].name%></td>
       <td>$<%=foundEvent.attendees[i].amountOwe%></td>
-    
 
-      <td><button name = "id" value = <%=foundEvent.attendees[i]._id%> type = "submit">Update</button></td>
-    </form></td>
-    <td><form method="POST" action="/<%-foundEvent.attendees.id%>?_method=DELETE">
+    <td><form method="POST" action="/events/<%-foundEvent._id%>?_method=DELETE">
+
         <button value= <%=foundEvent.attendees[i]._id%> name = "id" type = "submit">Remove</button></td>
 
     </tr>
