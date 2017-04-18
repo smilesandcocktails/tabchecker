@@ -10,7 +10,7 @@ function eventsHome (req, res) {
   console.log('REQ (eventsHome)' + req)
   console.log('REQ.USER (eventsHome)' + req.user);
 
-  User.findById(req.user.id).populate('events').exec( function (err, events) {
+  User.findById(req.user._id).populate('events').exec( function (err, events) {
     console.log('POPULATE FUNCTION STARTS');
     console.log(events);
     if (err) console.log(err)

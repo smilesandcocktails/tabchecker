@@ -48,12 +48,12 @@ app.use(function (req, res, next) {
 })
 
 // START THE ROUTING
+
+var eventRouter = require('./routes/eventRouter')
+app.use('/events', eventRouter)
+
 var userRouter = require('./routes/userRouter')
 app.use('/', userRouter)
-
-// app.use(isLoggedIn)
-var eventRouter = require('./routes/eventRouter')
-app.use('/', eventRouter)
 
 
 
