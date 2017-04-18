@@ -125,7 +125,6 @@ function deleteAttendee (req, res) {
       console.log('foundEvent after REMOVE is ' + foundEvent);
       res.redirect('/events/' + req.params.id)
   })
-
 }
 
 
