@@ -16,31 +16,26 @@ function signupPage (req, res) {
 }
 
 function createSignup (req, res) {
-  console.log('<<<<<---createSignup(usersCont) function has started--->>>>>')
-
   var reqBody = req.body
-  console.log('req.body', reqBody)
-  
-  res.json(reqBody);
+  var newUser = new User()
 
-  // var newUser = new User()
+  newUser.name = reqBody.name
+  newUser.email = reqBody.email
+  newUser.password = reqBody.password
 
-  // newUser.name = reqBody.name
-  // newUser.email = reqBody.email
-  // newUser.password = reqBody.password
-  // newUser.save(function (err, createdUser) {
-  //   console.log('Created User',createdUser)
-  //   if (err) {
-  //     console.log('err', err)
-  //     req.flash('error', 'Could not create user account')
-  //     res.redirect('/signup')
-  //   } else {
-  //     passport.authenticate('local', {
-  //       successRedirect: '/events',
-  //       successFlash: 'Account created and logged in'
-  //     })(req, res)
-  //   }
-  // })
+  newUser.save(function (err, createdUser) {
+    if(err){
+      res.json(err);
+      // console.log('err', err)
+      // req.flash('error', 'Could not create user account')
+      // res.redirect('/signup')
+    }else{
+      passport.authenticate('local', {
+        successRedirect: '/events',
+        successFlash: 'Account created and logged in'
+      })(req, res)
+    }
+  })
 }
 
 function showLogin (req, res) {
