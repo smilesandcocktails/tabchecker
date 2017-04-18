@@ -55,6 +55,17 @@ function listOneEvent (req, res) {
     res.render('events/singleEvent', {foundEvent})
   })
 }
+
+function deleteEvent (req, res) {
+  console.log('<<<<<---deleteEvent(eventsCont) function has started--->>>>>')
+  console.log('(before delete function) DELETE REQ PARAMS ID IS: ' + req.body.id)
+  Event.findByIdAndRemove(req.body.id, function (err, eventToDelete) {
+      console.log('(after delete function) DELETE REQ PARAMS ID IS: ' + req.body.id)
+    if (err) console.error('Cannot Delete Event')
+    res.redirect('/events')
+  })
+}
+
 function editEventDetails (req, res) {
   console.log('<<<<<---editEventDetails(eventsCont) function has started--->>>>>')
 
@@ -97,13 +108,7 @@ function editEvent (req, res) {
   })
 }
 
-function deleteEvent (req, res) {
-  console.log('<<<<<---deleteEvent(eventsCont) function has started--->>>>>')
-  Event.findByIdAndRemove(req.params.id, function (err, eventToDelete) {
-    if (err) console.error('Cannot Delete Event')
-    res.redirect('/events')
-  })
-}
+
 
 function deleteAttendee (req, res) {
   console.log('<<<<<---deleteAttendee function has started--->>>>>')
@@ -128,9 +133,9 @@ module.exports = {
   addEvent,
   postEventToDatabase,
   listOneEvent,
-  addAttendees,
-  editEvent,
-  deleteAttendee,
   deleteEvent,
+  editEvent,
+  addAttendees,
+  deleteAttendee,
   editEventDetails,
 }
