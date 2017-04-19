@@ -12,10 +12,9 @@
   <% events.forEach(function (each) { %>
     <li>
       <strong><%= each.eventName %> </strong>
-      <%= each.date %>
-      <%= each.totalBill %>
+      <%= formatDate(each.date)[0] %>
+      <%= '$'+each.totalBill %>
       <%= each.payer %>
-      <%= each.settled %>
       <form action=<%="/events/"+ each._id%> method="GET">
         <button type="submit">View</button>
       </form>

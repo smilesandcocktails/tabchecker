@@ -49,6 +49,9 @@ app.use(function (req, res, next) {
 
 // START THE ROUTING
 
+var viewAllRouter = require('./routes/viewAllRouter')
+app.use('/viewall', viewAllRouter)
+
 var eventRouter = require('./routes/eventRouter')
 app.use('/events', eventRouter)
 

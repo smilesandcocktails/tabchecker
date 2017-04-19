@@ -12,6 +12,7 @@ router.route('/add')
 
 router.route('/:id')
 .get(eventsController.listOneEvent)
+.post(eventsController.checkbox)
 .post(eventsController.addAttendees)
 .put(eventsController.editEvent)
 .delete(eventsController.deleteAttendee)

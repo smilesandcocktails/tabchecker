@@ -3,6 +3,7 @@ var app = express()
 var router = express.Router()
 var Event = require('../models/event')
 var User = require('../models/user')
+var formatDate = require('../config/formatDate')
 
 function eventsHome (req, res) {
   console.log('<<<<<---eventsHome(eventsCont) function has started--->>>>>')
@@ -14,7 +15,7 @@ function eventsHome (req, res) {
     console.log('POPULATE FUNCTION STARTS');
     console.log(events);
     if (err) console.log(err)
-    res.render('events/eventsHome', {events: events.events})
+    res.render('events/eventsHome', {events: events.events, formatDate: formatDate})
   })
 }
 
@@ -50,11 +51,26 @@ function postEventToDatabase (req, res) {
 function listOneEvent (req, res) {
   console.log('<<<<<---listOneEvent(eventsCont) function has started--->>>>>')
   Event.findById(req.params.id, function (err, foundEvent) {
-    console.log('EVENT AFTER DELETE' + foundEvent);
     if (err) console.error('Cannot Find Event')
-    res.render('events/singleEvent', {foundEvent})
+    res.render('events/singleEvent', {foundEvent: foundEvent, formatDate: formatDate})
   })
 }
+
+function checkbox (req, res, next) {
+    console.log('<<<<<---checkbox(eventsCont) function has started--->>>>>')
+    console.log('REQ.BODY IS: ' + req.body)
+    var checkboxTicked = req.body.checkbox
+    console.log('REQ.BODY.CHECKBOX IS: '+ checkboxTicked)
+    console.log('EVENT ID IS: ' + req.params.id)
+
+    if(req.body.checkbox === 'true') {
+      Event.findById(req.params.id, function (err, foundEvent) {
+        console.log('foundEvent is: '+ foundEvent)
+        console.log('EVENT ATTENDEES IS: ' + foundEvent.attendees);
+
+      })
+    }
+  }
 
 function deleteEvent (req, res) {
   console.log('<<<<<---deleteEvent(eventsCont) function has started--->>>>>')
@@ -68,6 +84,8 @@ function deleteEvent (req, res) {
 
 function editEventDetails (req, res) {
   console.log('<<<<<---editEventDetails(eventsCont) function has started--->>>>>')
+
+
 
   Event.findById(req.params.id, function (err, foundEvent) {
     if (err) console.error('Cannot Update Event')
@@ -108,8 +126,6 @@ function editEvent (req, res) {
   })
 }
 
-
-
 function deleteAttendee (req, res) {
   console.log('<<<<<---deleteAttendee function has started--->>>>>')
 
@@ -132,6 +148,7 @@ module.exports = {
   addEvent,
   postEventToDatabase,
   listOneEvent,
+  checkbox,
   deleteEvent,
   editEvent,
   addAttendees,

@@ -1,5 +1,3 @@
-<h1>Single Event</h1>
-
 <form action="/events" method="GET">
   <button type="submit">Back to All Events</button>
 </form>
@@ -9,11 +7,21 @@
 </form>
 
 <p>EVENT: <%= foundEvent.eventName %></p>
-<p>DATE: <%= foundEvent.date %></p>
+<p>DATE: <%= formatDate(foundEvent.date)[0] %></p>
 <p>TOTAL BILL: $<%= foundEvent.totalBill %></p>
 <p>PAID BY: <%= foundEvent.payer %></p>
 <form action=<%= "/events/" + foundEvent._id + "/edit" %> method="GET">
   <button type="submit">Update</button>
+</form>
+
+<form action=<%= "/events/" + foundEvent._id%> method="POST">
+  <div>
+    <input type="checkbox" id="checkbox" name="checkbox" value="true">
+    <label for="checkbox">Split Equally</label>
+  </div>
+  <div>
+    <button type="submit">Split</button>
+  </div>
 </form>
 
 <h2>Add Attendees</h2>

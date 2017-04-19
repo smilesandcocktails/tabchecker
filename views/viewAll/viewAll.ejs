@@ -1,0 +1,19 @@
+<h2>VIEW ALL EVENTS</h2>
+
+<form action="/viewall" method="POST">
+  <label for="eventName">Event Search</label>
+  <input type="text" name="eventName" placeholder="Name of Event">
+  <button type="button">Search Event</button>
+</form>
+
+<ul class="eventList">
+  <% foundEvents.forEach(function (each) { %>
+    <li>
+      <strong><%= each.eventName %> </strong>
+      <%= formatDate(each.date)[0] %>
+      <%= each.payer %>
+    </li>
+  <% }) %>
+</ul>
+
+<a class="signUpLoginButt" href="/login">Login</a>
