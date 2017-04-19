@@ -1,0 +1,12 @@
+<h2><%-foundEvent.eventName%></h2>
+
+<h3><%-formatDate(foundEvent.date)[0]%></h3>
+
+<h3><%-foundEvent.payer%></h3>
+
+<h3><%-foundEvent.totalBill%></h3>
+
+<%foundEvent.attendees.forEach (function (each) { %>
+  <h4><%-each.name%></h4>
+  <h4><%-each.amountOwe%></h4>
+<% })%>

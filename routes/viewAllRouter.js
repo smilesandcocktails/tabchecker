@@ -6,5 +6,7 @@ router.route('/')
 .get(viewAllController.viewAllEvents)
 .post(viewAllController.findEvent)
 
+router.route('/:id')
+.get(viewAllController.viewOneEvent)
 
 module.exports = router
