@@ -56,22 +56,6 @@ function listOneEvent (req, res) {
   })
 }
 
-function checkbox (req, res, next) {
-    console.log('<<<<<---checkbox(eventsCont) function has started--->>>>>')
-    console.log('REQ.BODY IS: ' + req.body)
-    var checkboxTicked = req.body.checkbox
-    console.log('REQ.BODY.CHECKBOX IS: '+ checkboxTicked)
-    console.log('EVENT ID IS: ' + req.params.id)
-
-    if(req.body.checkbox === 'true') {
-      Event.findById(req.params.id, function (err, foundEvent) {
-        console.log('foundEvent is: '+ foundEvent)
-        console.log('EVENT ATTENDEES IS: ' + foundEvent.attendees);
-
-      })
-    }
-  }
-
 function deleteEvent (req, res) {
   console.log('<<<<<---deleteEvent(eventsCont) function has started--->>>>>')
   console.log('(before delete function) DELETE REQ PARAMS ID IS: ' + req.body.id)
@@ -85,13 +69,22 @@ function deleteEvent (req, res) {
 function editEventDetails (req, res) {
   console.log('<<<<<---editEventDetails(eventsCont) function has started--->>>>>')
 
-
-
   Event.findById(req.params.id, function (err, foundEvent) {
     if (err) console.error('Cannot Update Event')
-    res.render('events/edit', {foundEvent})
+
+    var date = foundEvent.date
+
+    var day = (date.getDate()>9) ? date.getDate() : "0" + date.getDate();
+    var month = date.getMonth() + 1;
+    month = (month>9) ? month : "0" + month;
+    var year = date.getFullYear();
+    // format your date as you expect
+    var dateFormat = year+"-"+month+"-"+day
+
+    res.render('events/edit', {foundEvent: foundEvent, dateFormat: dateFormat})
   })
 }
+
 function addAttendees (req, res) {
   console.log('<<<<<---addAttendees function has started--->>>>>')
 
@@ -114,16 +107,22 @@ function addAttendees (req, res) {
 function editEvent (req, res) {
   console.log('<<<<<---editEvent(eventsCont) function has started--->>>>>')
   var reqBody = req.body
+
+
+
   Event.findOneAndUpdate({_id: req.params.id}, {
     eventName: reqBody.eventName,
     date: reqBody.date,
     totalBill: reqBody.totalBill,
     payer: reqBody.payer,
     settled: reqBody.settled
-  }, function (err, editedEvent) {
+  }, function(err, editedEvent) {
     if (err) console.error('Cannot Update Event')
+    console.log('SUCCESSFUL UPDATE');
     res.redirect('/events/'+ editedEvent.id)
   })
+
+
 }
 
 function deleteAttendee (req, res) {
@@ -148,7 +147,6 @@ module.exports = {
   addEvent,
   postEventToDatabase,
   listOneEvent,
-  checkbox,
   deleteEvent,
   editEvent,
   addAttendees,

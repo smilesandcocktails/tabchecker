@@ -14,16 +14,6 @@
   <button type="submit">Update</button>
 </form>
 
-<form action=<%= "/events/" + foundEvent._id%> method="POST">
-  <div>
-    <input type="checkbox" id="checkbox" name="checkbox" value="true">
-    <label for="checkbox">Split Equally</label>
-  </div>
-  <div>
-    <button type="submit">Split</button>
-  </div>
-</form>
-
 <h2>Add Attendees</h2>
 
 <form action=<%= "/events/" + foundEvent._id%> method="POST">

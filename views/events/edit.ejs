@@ -15,7 +15,7 @@
         <label for="date">Event Date:</label>
       </td>
       <td>
-        <input type="date" name="date" value="<%=foundEvent.date%>">
+        <input id="updatedDate" type="date" name="date" value="<%=dateFormat%>">
       </td>
     </tr>
     <tr>
@@ -35,7 +35,9 @@
       </td>
     </tr>
     <tr>
-      <button type="submit">Update</button>
+      <td>
+        <button type="submit">Update</button>
+      </td>
     </tr>
   </table>
 </form>
