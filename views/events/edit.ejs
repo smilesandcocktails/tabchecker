@@ -1,6 +1,12 @@
-<h2>Edit <%-foundEvent.eventName%></h2>
+<div class="editEvent">
 
-<form action=<%= "/events/" + foundEvent._id + "?_method=PUT" %> method="POST">
+<h2>I want to update: <%-foundEvent.eventName%></h2>
+
+<form action="/events/" + <foundEvent._id method="GET">
+  <button type="submit"><i class="material-icons">&#xE14A;</i></button>
+</form>
+
+<form id="editEventForm" action=<%= "/events/" + foundEvent._id + "?_method=PUT" %> method="POST">
   <table>
     <tr>
       <td>
@@ -8,6 +14,7 @@
       </td>
       <td>
         <input type="text" name="eventName" value="<%=foundEvent.eventName%>">
+        <button type="submit"><i class="material-icons">&#xE923;</i></button>
       </td>
     </tr>
     <tr>
@@ -36,8 +43,10 @@
     </tr>
     <tr>
       <td>
-        <button type="submit">Update</button>
+
       </td>
     </tr>
   </table>
 </form>
+
+</div>

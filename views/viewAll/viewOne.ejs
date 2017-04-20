@@ -1,12 +1,32 @@
-<h2><%-foundEvent.eventName%></h2>
+<div class="viewOne">
 
-<h3><%-formatDate(foundEvent.date)[0]%></h3>
+  <form action="/viewall" method="GET">
+    <button type="submit"><i class="material-icons">&#xE14A;</i></button>
+  </form>
 
-<h3><%-foundEvent.payer%></h3>
+  <div class="viewOneTitle">
 
-<h3><%-foundEvent.totalBill%></h3>
+    <h2><%-foundEvent.eventName%></h2>
 
-<%foundEvent.attendees.forEach (function (each) { %>
-  <h4><%-each.name%></h4>
-  <h4><%-each.amountOwe%></h4>
-<% })%>
+    <p>on <%-formatDate(foundEvent.date)[0]%></p>
+
+    <p>@ $<%-foundEvent.totalBill%></p>
+    <p>PAID BY: <%-foundEvent.payer%></p>
+  </div>
+
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Amount Owe</th>
+    </tr>
+    <%foundEvent.attendees.forEach (function (each) { %>
+    <tr>
+    <td>
+      <h4><%-each.name%></h4>
+    </td>
+    <td>
+      <h4>$<%-each.amountOwe%></h4>
+    </td>
+    </tr>
+    <% })%>
+</div>

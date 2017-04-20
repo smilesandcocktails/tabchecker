@@ -1,47 +1,46 @@
-<h2>Add New Event</h2>
+<div class="addNewEvent">
 
-<form action="/events" method="GET">
-  <button type="submit">Back to All Events</button>
-</form>
+  <h2>I want to Add a New Event</h2>
 
-<form action="/events/add" method="POST">
-  <table>
-    <tr>
-      <td>
-        <label for="eventName">Event Name:</label>
-      </td>
-      <td>
-        <input type="text" name="eventName" placeholder="Event Name">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="date">Event Date:</label>
-      </td>
-      <td>
-        <input type="date" name="date" placeholder="Event Date">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="totalBill">Total Bill:   $</label>
-      </td>
-      <td>
-      <input type="number" name="totalBill" placeholder="$100">
-    </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="payer">Payer:</label>
-      </td>
-      <td>
-        <input type="text" name="payer" placeholder="Cara">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button type="submit">Create New Event</button>
-      </td>
-    </tr>
-  </table>
-</form>
+  <form action="/events" method="GET">
+    <button type="submit"><i class="material-icons">&#xE14A;</i></button>
+  </form>
+
+  <form id="addEventForm" action="/events/add" method="POST">
+    <button id="addEventBtn" type="submit"><i class="material-icons">&#xE147;</i></button>
+    <table>
+      <tr>
+        <td>
+          <label for="eventName">Event Name:</label>
+        </td>
+        <td>
+          <input type="text" name="eventName" placeholder="Event Name">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="date">Event Date:</label>
+        </td>
+        <td>
+          <input type="date" name="date" placeholder="Event Date">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="totalBill">Total Bill:   $</label>
+        </td>
+        <td>
+          <input type="number" name="totalBill" placeholder="$100">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="payer">Payer:</label>
+        </td>
+        <td>
+          <input type="text" name="payer" placeholder="Cara">
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

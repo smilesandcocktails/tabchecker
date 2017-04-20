@@ -1,21 +1,24 @@
 
 <div class="viewAllEvents">
 
+  <form action="/" method="GET">
+    <button type="submit"><i class="material-icons">&#xE14A;</i></button>
+  </form>
+
   <form action="/viewall" id="searchBar" method="POST">
     <label for="search">Event Search</label>
     <input  type="text" name="search" placeholder="Name of Event">
-    <button type="submit">Search Event</button>
+    <button type="submit"><i class="material-icons">&#xE8B6;</i></button>
   </form>
 
   <div class="eventList">
     <% foundEvents.forEach(function (each) { %>
       <table>
       <tr>
-      <td><%= each.payer %></td>
       <td><%= each.eventName %></td>
-      <td><%= formatDate(each.date)[0] %></td>
+      <td>on <%= formatDate(each.date)[0] %></td>
       <td><form action=<%="/viewall/"+ each._id%> method="GET">
-      <button class="tableBtns" type="submit">View</button>
+      <button class="tableBtns" type="submit"><i class="material-icons">&#xE417;</i></button>
       </form></td>
       </tr>
       <table>

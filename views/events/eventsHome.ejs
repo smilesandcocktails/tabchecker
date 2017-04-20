@@ -1,26 +1,32 @@
-<h2>Welcome to your events</h2>
+<div class="allEventsContainer">
 
-<form action="/events/add" method="GET">
-  <button type="submit">Add New Event</button>
-</form>
 
-<form action="/logout" method="GET">
-  <button type="submit">Log Out</button>
-</form>
+<div class="eventHomeMainBtns">
+  <%# <h2 id="eventsHomeTitle">Welcome to all your events</h2>%>
 
-<ul class="eventList">
-  <% events.forEach(function (each) { %>
-    <li>
-      <strong><%= each.eventName %> </strong>
-      <%= formatDate(each.date)[0] %>
-      <%= '$'+each.totalBill %>
-      <%= each.payer %>
-      <form action=<%="/events/"+ each._id%> method="GET">
-        <button type="submit">View</button>
-      </form>
-      <td><form method="POST" action="/events?_method=DELETE">
-        <button value= <%=each._id%> name = "id" type = "submit">Delete</button></td>
-      </form></td>
-    </li>
-  <% }) %>
-</ul>
+  <form action="/events/add" method="GET">
+    <button type="submit"><i class="material-icons">&#xE147;</i></button>
+  </form>
+
+  <form action="/logout" method="GET">
+    <button type="submit"><i class="material-icons">&#xE8AC;</i></button>
+  </form>
+</div>
+
+    <div class="eventList">
+      <% events.forEach(function (each) { %>
+        <div>
+          <%= each.eventName %>
+          on <%= formatDate(each.date)[0] %>
+          @ <%= '$'+each.totalBill %>
+          <form class="eventHomeBt" action=<%="/events/"+ each._id%> method="GET">
+          <button type="submit"><i class="material-icons">&#xE417;</i></button>
+          </form>
+          <form class="eventHomeBt" method="POST" action="/events?_method=DELETE">
+            <button value= <%=each._id%> name = "id" type = "submit"><i class="material-icons">&#xE92B;</i></button></td>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+
+</div>

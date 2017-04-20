@@ -1,51 +1,70 @@
-<form action="/events" method="GET">
-  <button type="submit">Back to All Events</button>
-</form>
+<%# <div class="singleEventPage">%>
 
-<form action="/logout" method="GET">
-  <button type="submit">Log Out</button>
-</form>
-
-<p>EVENT: <%= foundEvent.eventName %></p>
-<p>DATE: <%= formatDate(foundEvent.date)[0] %></p>
-<p>TOTAL BILL: $<%= foundEvent.totalBill %></p>
-<p>PAID BY: <%= foundEvent.payer %></p>
-<form action=<%= "/events/" + foundEvent._id + "/edit" %> method="GET">
-  <button type="submit">Update</button>
-</form>
-
-<h2>Add Attendees</h2>
-
-<form action=<%= "/events/" + foundEvent._id%> method="POST">
-        <label for="name">Attendee Name:</label>
-        <input type="text" name="name" placeholder="Attendee Name">
-        <label for="amountOwe">Amount Owe:</label>
-        <input type="amountOwe" name="amountOwe" placeholder="$">
-
-        <button type="submit">Create New Attendee</button>
-</form>
-
-
-<table>
-  <tr>
-    <th>#</th>
-    <th>Name</th>
-    <th>Amount Owe</th>
-    <th>Already Paid</th>
-  </tr>
-
-  <% for (var i = 0; i < foundEvent.attendees.length; i++) { %>
-    <tr>
-    <form action = "/events/<%-foundEvent.attendees.id%>" method = "POST">
-      <td><%=i+1%></td>
-      <td><%=foundEvent.attendees[i].name%></td>
-      <td>$<%=foundEvent.attendees[i].amountOwe%></td>
+  <div class="singleEventBtns">
+    <form id="SPBack" action="/events" method="GET">
+      <button type="submit"><i class="material-icons">&#xE14A;</i></button>
     </form>
 
-    <td><form method="POST" action="/events/<%-foundEvent._id%>?_method=DELETE">
+    <form id="SPLogout" action="/logout" method="GET">
+      <button type="submit"><i class="material-icons">&#xE8AC;</i></button>
+    </form>
+  </div>
 
-        <button value= <%=foundEvent.attendees[i]._id%> name = "id" type = "submit">Remove</button></td>
+<div class="col1Container">
+  <div class="col1">
+    <div class="SPEventDetailsWithHeading">
+      <h2 class="SPh2"><%= foundEvent.eventName %></h2>
 
-    </tr>
-<%  } %>
-</table>
+      <div class="SPEventDetails">
+        <p>on <%= formatDate(foundEvent.date)[0] %></p>
+        <p>@ $<%= foundEvent.totalBill %></p>
+        <p>PAID BY: <%= foundEvent.payer %></p>
+
+        <form id="SPEventUpdate" action=<%= "/events/" + foundEvent._id + "/edit" %> method="GET">
+          <button type="submit"><i class="material-icons">&#xE923;</i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col2Container">
+
+  <div class="col2">
+    <h2 class="SPh2">Add Attendees</h2>
+
+    <form action=<%= "/events/" + foundEvent._id%> method="POST">
+      <label for="name">Attendee Name:</label>
+      <input type="text" name="name" placeholder="Attendee Name">
+      <button type="submit"><i class="material-icons">&#xE05E;</i></button>
+    <br>
+    <label for="amountOwe">Amount Owe:</label>
+    <input type="amountOwe" name="amountOwe" placeholder="$">
+  </form>
+
+    <table class="table">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Amount Owe</th>
+        <th>Already Paid</th>
+      </tr>
+
+      <% for (var i = 0; i < foundEvent.attendees.length; i++) { %>
+        <tr>
+        <form action = "/events/<%-foundEvent.attendees.id%>" method = "POST">
+        <td><%=i+1%></td>
+        <td><%=foundEvent.attendees[i].name%></td>
+        <td>$<%=foundEvent.attendees[i].amountOwe%></td>
+        </form>
+
+        <td><form method="POST" action="/events/<%-foundEvent._id%>?_method=DELETE">
+
+        <button value= <%=foundEvent.attendees[i]._id%> name = "id" type = "submit"><i class="material-icons">&#xE92B;</i></button></td>
+
+        </tr>
+        <%  } %>
+      </table>
+    </div>
+</div>
+<%# </div>%>
