@@ -1,18 +1,16 @@
 <form class="contact-form" action="/signup" method="POST">
   <p>My
     <label for="name">name</label> is
-    <input type="text" name="name" id="name" placeholder="(your name here)" required> and</p>
-
+    <input type="text" name="name" id="SUname" placeholder="(your name here)" required> <span class="and"><i>&</i></span></p>
   <p>my
     <label for="email">email address</label> is
-    <input type="email" name="email" id="email" placeholder="(your email address)" required>
+    <input type="email" name="email" id="SUemail" placeholder="(your email address)" required>.
   </p>
-
-  <p> My password
-    <label for="password">password</label> is secret,</p>
+  <p> Oh, and here's my secret
+    <label for="password">password</label> is</p>
 
   <p>
-    <textarea name="password" id="password" placeholder="(your password here)" class="expanding" required></textarea>
+    <input type="password" name="password" id="SUpassword" placeholder="(your password here)" required></input>.
   </p>
   <p>
     <button type="submit">
