@@ -1,5 +1,3 @@
-var express = require('express')
-var router = express.Router()
 var User = require('../models/user')
 var passport = require('../config/ppConfig')
 
@@ -31,7 +29,7 @@ function createSignup (req, res) {
   newUser.email = reqBody.email
   newUser.password = reqBody.password
   newUser.save(function (err, createdUser) {
-    console.log('Created User',createdUser)
+    console.log('Created User', createdUser)
     if (err) {
       console.log('err', err)
       req.flash('error', 'Could not create user account')
@@ -64,5 +62,5 @@ module.exports = {
   signupPage,
   createSignup,
   showLogin,
-  authenticateLogin,
+  authenticateLogin
 }

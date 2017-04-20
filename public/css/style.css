@@ -9,7 +9,6 @@ html {
 }
 
 body {
-  /*font-family: 'Nunito', sans-serif;*/
   font-family: 'Coming Soon', cursive;
 }
 
@@ -147,6 +146,18 @@ h2 {
   font-size: 105%;
 }
 
+#loginBackBtn {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:center;
+}
+
+#SUBackBtn {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:center;
+}
+
 label {
   font-weight: 400;
   cursor: pointer;
@@ -272,7 +283,6 @@ small {
 
 /*All Events Page*/
 
-
 .allEventsContainer {
   display: flex;
   flex-direction: column;
@@ -286,7 +296,6 @@ small {
 
 .eventList {
   border-radius: 2px;
-  /*background: rgba(215, 217, 206, 0.2);*/
   vertical-align: center;
   font-size: 110%;
   font-family: 'Coming Soon', cursive;
@@ -341,14 +350,6 @@ i {
   margin-top: 2%;
 }
 
-/*Single Events*/
-
-/*.singleEventPage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2%;
-}*/
 .singleEventBtns {
 text-align: center;
 }
@@ -376,7 +377,6 @@ text-align: center;
   color: white;
 }
 
-
 .SPEventDetailsWithHeading h2 {
   margin-right: 10px;
 }
@@ -394,7 +394,7 @@ text-align: center;
   border: white;
   border-style: dashed;
   padding-left: 8%;
-  padding-right: 8%;
+  padding-right: 2%;
   margin-left: 4%;
   margin-top: 2%;
   height: 450px;

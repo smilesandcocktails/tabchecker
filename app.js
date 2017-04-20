@@ -1,4 +1,4 @@
-require('dotenv').config({silent:true})
+require('dotenv').config({silent: true})
 var express = require('express')
 var ejsLayouts = require('express-ejs-layouts')
 var bodyParser = require('body-parser')
@@ -17,15 +17,15 @@ var dburi = process.env.MONGO_URI
 mongoose.connect(dburi)
 mongoose.Promise = global.Promise
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('REALLY CONNECTED THIS TIME');
-});
+var db = mongoose.connection
+db.on('error', console.error.bind(console, 'connection error:'))
+db.once('open', function () {
+  console.log('REALLY CONNECTED THIS TIME')
+})
 
 app.set('view engine', 'ejs')
 
-app.use(session ({
+app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
@@ -47,21 +47,17 @@ app.use(function (req, res, next) {
   next()
 })
 
-// START THE ROUTING
-
+// START OF ROUTING
 var viewAllRouter = require('./routes/viewAllRouter')
 app.use('/viewall', viewAllRouter)
 
 var eventRouter = require('./routes/eventRouter')
-app.use('/events', eventRouter)
+app.use('/events', isLoggedIn, eventRouter)
 
 var userRouter = require('./routes/userRouter')
 app.use('/', userRouter)
 
-
-
-
-// END THE ROUTING
+// END OF ROUTING
 
 app.listen(port, function () {
   console.log('express is running on port ' + port)
