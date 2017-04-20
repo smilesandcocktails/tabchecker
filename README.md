@@ -44,24 +44,25 @@ You can direct your friends to the website to view your events without signing i
 | --                   | attendees [{name, amountOwe}] |
 
 ### Routes
-| userRouter  | eventRouter     | viewAllRouter    |
-| ----------- |:---------------:| ----------------:|
-| **('/') **  | **('/events')** | **('/viewall')** |
-| ('/signup') | ('/add')        |   ('/:id')       |
-| ('/login')  | ('/:id')        |  --              |
-| ('/login')  | ('/:id/edit')   |  --              |
+| userRouter  | eventRouter         | viewAllRouter    |
+| ----------- |:---------------:    | ----------------:|
+| **('/')**   | **('/events')**     | **('/viewall')** |
+| ('/signup') | ('events/add')      |   ('viewall/:id')|
+| ('/login')  | ('events/:id')      |  --              |
+| ('/logout') | ('events/:id/edit') |  --              |
 
 ### Controllers
-| userController           | eventController            | viewAllController   |
+| usersController          | eventsController           | viewAllController   |
 | ------------------------ |:--------------------------:| -------------------:|
 | homepage (.get)          | eventsHome (.get)          | viewAllEvents (.get)|
-| logout (.get)            | postEventToDatabase (.post)| addEvent (.post)    |
-| signupPage (.get)        | listOneEvent (.get)        | viewOneEvent (.get) |
-| createSignup (.post)     | deleteEvent (.delete)      | --                  |
-| showLogin (.get)         | editEvent (.put)           | --                  |
-| authenticateLogin (.post)| addAttendees (.post)       | --                  |
+| showLogin (.get)         | addEvent (.get)            | viewOneEvent (.get) |
+| authenticateLogin (.post)| postEventToDatabase (.post)| --                  |
+| signupPage (.get)        | editEventDetails (.get)    | --                  |
+| createSignup (.post)     | editEvent (.put)           | --                  |
+| logout (.get)            | deleteEvent (.delete)      | --                  |
+| --                       | listOneEvent (.get)        | --                  |
+| --                       | addAttendees (.post)       | --                  |
 | --                       | deleteAttendee (.delete)   | --                  |
-| --                       | editEventDetails (.get)    | --                  |
 
 ## Credit
 * [Jonathan](https://github.com/noll-fyra) (Creator of the search bar & date formatter in my program)
