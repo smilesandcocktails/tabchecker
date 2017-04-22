@@ -1,10 +1,10 @@
 html {
-  background-color: darkgrey;
-  background-image: url('https://static.pexels.com/photos/160146/pexels-photo-160146.jpeg');
+  background-color: #FFBC42;
+  /*background-image: url('https://static.pexels.com/photos/160146/pexels-photo-160146.jpeg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 100vh;*/
   margin: 0 auto;
 }
 
@@ -325,9 +325,6 @@ i {
   display: inline-block;
 }
 
-.eventHomeBt {
-
-}
 
 .eventHomeMainBtns form {
   display: inline-block;
@@ -358,17 +355,26 @@ text-align: center;
   display: inline-block;
 }
 
-.SPEventDetails p, form {
+/*SPEventDetailsWithHeading {
+}*/
+
+.SPEventDetails{
+  vertical-align: center;
   display: inline-block;
+  margin-top: 0;
+  line-height: 1px;
+}
+
+.col2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 0;
 }
 
-.SPEventDetails {
-  margin-top: 40%;
-}
 
 .table {
-  margin-top: 5%;
+  margin-top: 5px;
   text-align: center;
   color: #5B2333;
 }
@@ -377,43 +383,22 @@ text-align: center;
   color: white;
 }
 
-.SPEventDetailsWithHeading h2 {
-  margin-right: 10px;
-}
-
-#SPEventUpdate {
+#attendeeform {
   margin-top: 0;
 }
 
-.col1, .col2 {
+#updateBtn {
   display: inline-block;
+  margin-top: 0;
 }
 
-.col1Container {
-  float: left;
-  border: white;
-  border-style: dashed;
-  padding-left: 8%;
-  padding-right: 2%;
-  margin-left: 4%;
-  margin-top: 2%;
-  height: 450px;
-}
-
-.col2Container {
-  float: right;
-  border: white;
-  border-style: dashed;
-  padding-left: 8%;
-  padding-right: 8%;
-  /*margin-left: 2%;*/
-  margin-right: 6%;
-  margin-top: 2%;
-  height: 450px;
-}
 
 .SPh2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: white;
+  margin-top: 0;
 }
 
 /*Edit Event Page*/
@@ -434,7 +419,9 @@ text-align: center;
   flex-direction: column;
   align-items: center;
 }
-
+#SPview {
+  margin-bottom: 0px;
+}
 .viewOneTitle h2, p {
   display: inline-block;
 }

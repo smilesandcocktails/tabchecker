@@ -7,31 +7,27 @@
       <button type="submit"><i class="material-icons">&#xE8AC;</i></button>
     </form>
   </div>
+<div class="viewOne" id="SPview">
 
-<div class="col1Container">
-  <div class="col1">
-    <div class="SPEventDetailsWithHeading">
-      <h2 class="SPh2"><%= foundEvent.eventName %></h2>
+  <div class="viewOneTitle">
 
-      <div class="SPEventDetails">
-        <p>on <%= formatDate(foundEvent.date)[0] %></p>
-        <p>@ $<%= foundEvent.totalBill %></p>
-        <p>PAID BY: <%= foundEvent.payer %></p>
+    <h2><%-foundEvent.eventName%></h2>
 
-        <form id="SPEventUpdate" action=<%= "/events/" + foundEvent._id + "/edit" %> method="GET">
-          <button type="submit"><i class="material-icons">&#xE923;</i></button>
-        </form>
-      </div>
-    </div>
+    <p>on <%-formatDate(foundEvent.date)[0]%></p>
+
+    <p>@ $<%-foundEvent.totalBill%></p>
+    <p>PAID BY: <%-foundEvent.payer%></p>
+    <form id="updateBtn" action=<%= "/events/" + foundEvent._id + "/edit" %> method="GET">
+      <button type="submit"><i class="material-icons">&#xE923;</i></button>
+    </form>
   </div>
 </div>
 
-<div class="col2Container">
 
   <div class="col2">
     <h2 class="SPh2">Add Attendees</h2>
 
-    <form action=<%= "/events/" + foundEvent._id%> method="POST">
+    <form id="attendeeform" action=<%= "/events/" + foundEvent._id%> method="POST">
       <label for="name">Attendee Name:</label>
       <input type="text" name="name" placeholder="Attendee Name">
       <button type="submit"><i class="material-icons">&#xE05E;</i></button>
@@ -64,4 +60,4 @@
         <%  } %>
       </table>
     </div>
-</div>
+<!-- </div> -->
